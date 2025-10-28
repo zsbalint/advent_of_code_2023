@@ -23,14 +23,30 @@ for item in raw_content:
         all_shows.append(show_dict)
     content[key] = all_shows
 
+##### PART A #####
+# sum = 0
 
-sum = 0
+# for key, value in content.items():
+#     correct = True
+#     for showing in value:
+#         if int(showing['red']) > RED or int(showing['green']) > GREEN or int(showing['blue']) > BLUE:
+#             correct = False
+#     if correct:
+#         sum += int(key)
+# print(sum)
+
+##### PART B #####
+power_sum = 0
 
 for key, value in content.items():
-    correct = True
+    red, blue, green = 0, 0, 0
     for showing in value:
-        if int(showing['red']) > RED or int(showing['green']) > GREEN or int(showing['blue']) > BLUE:
-            correct = False
-    if correct:
-        sum += int(key)
-print(sum)
+        if int(showing['red']) > red:
+            red = int(showing['red'])
+        if int(showing['green']) > green:
+            green = int(showing['green'])
+        if int(showing['blue']) > blue:
+            blue = int(showing['blue'])
+    power_sum += red*blue*green   
+
+print(power_sum)
